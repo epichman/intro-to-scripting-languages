@@ -1,0 +1,19 @@
+from sys import argv
+
+script_name, user_name, age = argv
+
+print "Hello %s, you are at the very YOUNG age of %s years old!\n" % (user_name, age)
+
+print """The next two questions ask your height in feet and inches. If you are 5'11",
+answer 5 to the first question and 11 to the second."""
+height_feet = raw_input("How many feet tall are you (excluding inches)? ")
+height_inches = raw_input("How many inches tall are you (excluding feet)? ")
+
+# solution: note that I've used triple quotes to allow for both the ' and " characters
+print """You are %s'%s".\n""" % (height_feet, height_inches)
+
+# -----------------------------------------------------------------
+# solution: these strings must first be converted into integers to perform these
+# calculations, see page 11 of the assigned reading in PER
+inches = (int(height_feet) * 12) + int(height_inches)
+print "You are %d inches tall." % inches
