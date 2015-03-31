@@ -1,0 +1,14 @@
+# intro-to-scripting-languages
+my_amount = 25.678437
+print "%0.2f" % my_amount
+
+my_first_number = 124.5392
+my_second_number = 51.493333
+my_third_number = 6.28345
+
+
+# right-align the above three floating point values in a column with a width of six 
+# characters and show only two decimal places
+print "%6.2f" % my_first_number
+print "%6.2f" % my_second_number
+print "%6.2f" % my_third_number
