@@ -1,0 +1,53 @@
+# intro-to-scripting-languages
+Class
+from sys import argv
+from os.path import exists, abspath  
+
+# we don't use the script variable, so there is no need to assign it a value:
+# use the indexing operator / slice techniques learned for strings and apply them to the
+# argv attribute to ONLY extract the filenames (as discussed in last week's discussion 
+# board).
+
+input_file, output_file = argv[1:3]
+# alternative solutions # teachers note, wanted to keep for me to reference back to. 
+input_file = argv[1]
+output_file = argv[2]
+
+# print the absolute path of each file using the relevant function from the os.path module
+print 'The absolute path of the input file is %s' % abspath(input_file)
+print 'The absolute path of the input file is %s' % abspath(output_file)
+
+print '\n'  # I added this to clean up the output a little
+
+# combine the next two lines into one
+# this is the solution alluded to by LPTHW, i.e. using the semicolon
+
+in_file = open(input_file); indata = in_file.read()
+
+# you could also do the following, but this would mean you'd need to remove the 
+# corresponding close statement. We will learn a better way of handling files later on
+# indata = open(input_file).read()
+# teachers note, I want to keep for reference later
+print "The input file is %d bytes long" % len(indata)
+
+print "Does the output file exist? %r" % exists(output_file)
+print "Ready, hit RETURN to continue, CTRL-C to abort."
+raw_input()
+
+out_file = open(output_file, 'w')
+out_file.write(indata)
+
+# before closing the files, read the first 13 characters from the first file and print
+# them to the console, see pp. 159-161 in PER
+in_file.seek(0)  # first use 'seek' to go to beginning of file
+print 'The first 13 characters of the input file are %s' % in_file.read(13)
+
+# why are the next two lines important? #closes the files after being written and saved
+out_file.close()
+in_file.close()
+
+# append the footer string to the output_file (do not overwrite any existing text)
+footer = '\nThe End'
+out_file = open(output_file, 'a')  # append
+out_file.write(footer)
+out_file.close()
