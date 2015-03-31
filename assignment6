@@ -1,0 +1,69 @@
+Score  Grade
+-----  -----
+    0      F
+   72      C
+   84      B
+   91      A
+  100      A
+  
+9. Print the lowest score and corresponding letter grade in a user-friendly sentence.
+10. Create a dictionary with student names and scores, similar to this (use any names
+    and scores you want):
+    
+student_dictionary = {
+    "John Doe": 65,
+    "Jane Doe": 77,
+    "Bob Smith": 100,
+    "Amy Jones": 99
+}
+
+11. Using the function created in step 7, loop through the dictionary and print a 
+    user-friendly sentence with each student's name, score, and corresponding letter grade
+"""
+def get_score():
+    return raw_input("Enter score (type 'end' when finished):")
+	
+def get_letter_grade(score):
+    if score == 'end':
+	    return score
+    else:
+        score = int(score)
+		
+	if score >= 90:
+	    return 'A'
+	elif score < 90 and score > 79:
+	    return 'B'
+	elif score < 80 and score > 69:
+	    return 'C'
+	elif score < 70 and score > 59:
+	    return 'D'
+	elif score < 60:
+	    return 'F'
+	else: return 'ERROR'
+	
+	
+student_dictionary = {
+    "john Doe" : 65,
+	"Jane Doe" : 77,
+	"Bob Smith" : 100,
+	"Amy Jones" : 99,
+	"Mike Smith" : 25
+}
+score_list = []
+current_score = get_score()
+
+# loop to continue asking until user enters end
+while current_score != 'end':
+    score_list.append(current_score)
+    current_score = get_score() #This what makes it continue asking for score
+	
+print 'Score Grade'
+print '----- -----'
+for score in sorted(score_list): # sort to put in order
+    print '%5s %5s' % (score, get_letter_grade(score))
+	
+minimum_score = min(score_list)
+print ' The lowest score was %s, which is an %s\n' % (minimum_score, get_letter_grade(minimum_score))
+
+for student_name, score in student_dictionary.items():
+    print "%s's score is %s, which is a %s." % (student_name, score, get_letter_grade(score))
